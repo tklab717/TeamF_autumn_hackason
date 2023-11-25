@@ -1,0 +1,304 @@
+/* サインアップ/ログイン画面のCSS */
+
+/* .registration-wrapper {
+  width: 100vw;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--navy_blue);
+  font-family: "Abril Fatface", cursive;
+  font-family: "League Spartan", sans-serif;
+} */
+
+.registration-grid {
+  background: #48EBD6;
+  min-height: 100vh;
+  display: grid;
+  grid-template:
+    "logo tab"
+    "logo tab"
+    "logo tab";
+  /* gap: 16vh 12vh; */
+  justify-content: center;
+}
+
+/* 例: 768px以下の画面サイズに適用 */
+@media (max-width: 768px) {
+  .registration-grid {
+    grid-template:
+      "logo"
+      "logo"
+      "logo"
+      "tab"
+      "tab"
+      "tab";
+    gap: 8vh 8vw;
+  }
+}
+
+
+.logo-area {
+  grid-area: logo;
+  margin-top: 16vh;
+  width: 50vh;
+  height: 50vh;
+  background: #48EBD6;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  text-align: center;
+}
+
+.logo-area > h1{
+  font-size: 40px;
+  font-weight: 900;
+  margin: 10px 0px;
+  /* margin-right: 100px; */
+}
+@media (max-width: 768px) {
+  .logo-area > h1 {
+    font-size: 24px;
+    text-align: center;
+  }
+}
+.logo-area > p {
+  margin: 0px 0px;
+}
+@media (max-width: 768px) {
+  .logo-area > p {
+    font-size: 10px;
+    text-align: center;
+  }
+}
+.logo-area > img {
+  width: 60%;
+  height: auto;
+  max-width: 60vw;
+  max-height: 60vh;
+  object-fit: contain;
+  border-radius: 40px;
+  margin: auto;
+  box-shadow: 1px 2px 4px gray;
+}
+
+@media (max-width: 768px) {
+  .logo-area > img {
+    max-width: 30vw;
+    max-height: 30vh;
+    margin: auto;
+  }
+}
+
+
+.registration-tab {
+  grid-area: tab;
+  max-width: 64vh;
+  min-height: 64vh;
+  margin: auto;
+  margin-top: 50px;
+}
+
+.registration-container {
+  margin: auto;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: row-reverse;
+  gap: 2rem;
+  background-color: #FFFAED;
+  border: 3% solid var(--navy_blue);
+}
+
+.registration-form-wrapper {
+  width: 600px; /* 600px以上は変わらない */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: scroll;
+}
+
+.registration-main-pic {
+  height: 100%;
+  border-radius: 0 10px 10px 0 / 0 10px 10px 0;
+}
+
+.registration-mobile-pic {
+  display: none;
+}
+
+.registration-logo {
+  height: 80px;
+  position: absolute;
+  top: 0.5rem;
+  left: 2rem;
+}
+
+.registration-logo > img {
+  height: 10%;
+  width: auto;
+  border-left: solid 12px var(--navy_blue);
+  padding-left: 10px;
+}
+
+.registration-logo > p {
+  display: contents;
+}
+
+.registration-button-container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.registration-title {
+  color: var(--navyblue);
+  margin-bottom: 0;
+  margin: 0;
+  font-weight: 900;
+  font-size: 48px;
+  z-index: 100;
+  margin-bottom: 2rem;
+}
+
+.registration-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 60%;
+  width: 90%; 
+}
+
+.registration-form.login {
+  margin: 10vh auto 0vh;
+}
+
+.registration-form.signup {
+  padding-top: 40px;
+  margin: auto;
+}
+
+.registration-form > div {
+  width: 100%;
+  margin-bottom: 1rem;
+}
+
+.registration-form input {
+  border: solid 2px var(--navyblue);
+  outline: none;
+  margin-bottom: 10px;
+  line-height: 32px;
+  width: 100%;
+  padding: 0.5rem 1rem;
+  border-radius: 10px;
+  box-shadow: 0px 1px 4px gray;
+  box-sizing: border-box; /* パディングとボーダーを含む幅に設定 */
+}
+
+.registration-form input::placeholder {
+  color: lightgrey;
+}
+
+.registration-form label {
+  font-size: 16px;
+  color: var(--navyblue);
+}
+
+.registration-button {
+  /*width: 100%;
+  */
+  color: var(--green4);
+  width: 150px;
+  height: 40px;
+  border-radius: 10px;
+  background-color: var(--green2);
+  text-align: center;
+  border: solid 2px var(--navyblue);
+  box-shadow: 0px 1px 4px gray;
+  margin-bottom: 12px;
+}
+
+.switch-register-mode {
+  color: grey;
+  line-height: 28px;
+  font-size: 14px;
+  border-bottom: solid 2px lightgrey;
+  padding: 0.5rem 2rem 0 2rem;
+}
+
+.switch-register-mode:hover {
+  color: var(--navy_blue);
+}
+
+.flashes {
+  margin: 0;
+  padding-inline-start: 0;
+  text-align: center;
+  font-size: 18px;
+  color: rgb(198, 8, 8);
+}
+
+/* ========================================================== */
+/* レスポンシブ */
+
+@media screen and (max-width: 639px) {
+  .registration-container {
+    flex-direction: column-reverse;
+    gap: 0;
+  }
+  .registration-form-wrapper {
+    width: 100%;
+    padding: 0;
+  }
+  .registration-form {
+    padding-top: 80px;
+    min-height: 0;
+  }
+  .registration-main-pic {
+    display: none;
+  }
+  .registration-mobile-pic {
+    display: block;
+    height: 25%;
+  }
+  .registration-button {
+    margin-bottom: 0;
+  }
+
+  .registration-form input {
+    line-height: 20px;
+    font-size: 14px;
+  }
+  .registration-form.signup {
+    padding-top: 60px;
+  }
+}
+
+@media only screen and (min-width: 640px) and (max-width: 1023px) {
+  .registration-container {
+    flex-direction: column-reverse;
+    gap: 0;
+  }
+  .registration-form-wrapper {
+    width: 100%;
+    padding: 0;
+  }
+  .registration-form {
+    padding-top: 80px;
+  }
+  .registration-main-pic {
+    display: none;
+  }
+  .registration-mobile-pic {
+    display: block;
+    height: 25%;
+  }
+}
+
+@media screen and (min-width: 1360px) {
+  .registration-container {
+    width: 100%;
+  }
+}
+

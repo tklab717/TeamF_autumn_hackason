@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>マイページ</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/mypage.css') }}">
+</head>
+<body id="mypage-body">
+    <h1>マイページ</h1>
+    <form id="team-select-form" action="{{ url_for('teamSelectProcess') }}" method="post" class="mypage-form">
+     <!-- 年の選択 -->
+     <label for="year" class="mypage-label">年を選択してください:</label>
+     <select id="year" name="year" class="mypage-select">
+    <option value="2023">2023年</option>
+    <option value="2024">2024年</option>
+   </select>
+
+    <!-- 季節の選択 -->
+    <label for="season" class="mypage-label">季節を選択してください:</label>
+    <select id="season" name="season" class="mypage-select">
+    <option value="spring">春</option>
+    <option value="summer">夏</option>
+    <option value="autumn">秋</option>
+    <option value="winter">冬</option>
+  </select>
+
+    <!-- チーム名の入力 -->
+    <label for="team" class="mypage-label">チーム名を記入してください:</label>
+    <input type="text" id="team" name="team" class="mypage-input" required>
+
+    <!-- GitHubアドレスの入力 -->
+    <label for="github" class="mypage-label">GitHub アドレスを入力してください:</label>
+    <input type="url" id="github" name="github" class="mypage-input" required>
+    
+    <!-- フォームの送信ボタン -->
+        <button type="submit" class="mypage-button">チャットルームへ進む</button>
+        <a href="{{ url_for('login') }}" class="mypage-back-button">ログイン画面に戻る</a>
+      </div>
+    </form>
+  </div>
+  <script src="{{ url_for('static', filename='js/mypage.js') }}"></script>
+</body>
+</html>

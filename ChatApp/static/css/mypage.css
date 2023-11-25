@@ -1,0 +1,81 @@
+#mypage-body {
+  background-color: #48EBD6; /* オアシスのような爽やかな色 */
+  font-family: 'Arial', sans-serif;
+  text-align: center; /* テキストを中央揃えにする */
+}
+
+.mypage-form {
+  width: 40%;
+  margin: auto;
+  padding: 20px;
+  background-color: #FFFAED;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+}
+
+/* 新しいクラスに対するスタイル */
+.mypage-label {
+  /* ラベルに対するスタイル */
+  margin-bottom: 10px;
+  text-align: left; /* テキストを左寄せにする */
+}
+
+.mypage-select {
+  /* セレクトボックスに対するスタイル */
+  height: 50px;
+  padding: 0.5em;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+.mypage-input {
+  /* インプットフォームに対するスタイル */
+  height: 50px;
+  padding: 0.5em;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+.mypage-button {
+  /* ボタンに対するスタイル */
+  padding: 20px 20px;
+  margin-top: auto; /* 上側の余白をフレックスアイテムの間隔として使用 */
+  background-color: #E8F9D3; /* オアシスの色 */
+  color: #5DAB73;
+  cursor: pointer;
+  font-weight: bold; /* これでテキストが太字になります */
+  transition: background-color 0.3s; /* ホバー時のトランジション効果を追加 */
+  align-self: flex-start; /* ボタンを左寄せにします */
+  border: solid 2px var(--navyblue);
+  box-shadow: 0px 1px 4px gray;
+}
+
+
+.mypage-button:hover {
+  background-color: #00796b; /* ホバー時の背景色 */
+}
+
+.mypage-back-button {
+  /* 戻るボタンに対するスタイル */
+  padding: 20px 20px;
+  margin-top: 20px; /* 上の余白を増やしてボタンを下げます */
+  background-color: #E8F9D3; /* オアシスの色 */
+  color: #5DAB73;
+  cursor: pointer;
+  font-weight: bold; /* これでテキストが太字になります */
+  transition: background-color 0.3s; /* ホバー時のトランジション効果を追加 */
+  align-self: center; /* ボタンを中央寄せにします */
+  box-shadow: 0px 1px 4px gray;
+  border: solid 2px var(--navyblue);
+}
+
+.mypage-back-button:hover {
+  background-color: #00796b; /* ホバー時の背景色 */
+}
+

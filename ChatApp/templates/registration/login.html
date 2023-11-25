@@ -1,0 +1,110 @@
+{% extends 'registration/base.html' %} {% block title %}
+<title>ログイン</title>
+{% endblock %} {% block body %}
+<div class="registration-tab">
+  <ul class="tab__menu">
+    <li class="tab__menu-item is-active" data-tab="01">
+      <a href="{{ url_for('login') }}">ログイン</a>
+    </li>
+    <li class="tab__menu-item" data-tab="02">
+      <a href="{{ url_for('signup') }}">新規登録</a>
+    </li>
+  </ul>
+  <div class="tab__panel">
+    <div class="tab__panel-box tab__panel-box001 is-show" data-panel="01">
+      <p class="tab__panel-text"></p>
+      <div class="registration-container">
+        <div class="registration-form-wrapper">
+          <form class="registration-form login" method="post">
+            <div>
+              <label for="email-input">メールアドレス</label>
+              <input
+                type="text"
+                placeholder="Email"
+                name="email"
+                id="email-input"
+              />
+            </div>
+            <div>
+              <label for="password-input">パスワード</label>
+              <input
+                type="password"
+                placeholder="Password"
+                name="password"
+                id="password-input"
+              />
+            </div>
+            <div class="registration-button-container">
+              {% with messages = get_flashed_messages() %} {% if messages %}
+              <ul class="flashes">
+                {% for message in messages %}
+                <li>{{ message }}</li>
+                {% endfor %}
+              </ul>
+              {% endif %} {% endwith %}
+              <button class="registration-button">ログイン</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+    <div class="tab__panel-box tab__panel-box002" data-panel="02">
+      <p class="tab__panel-text"></p>
+      <div class="registration-container">
+        <div class="registration-form-wrapper">
+          <form class="registration-form signup" method="post">
+            <div>
+              <label for="signup-name-input">ユーザーネーム</label>
+              <input
+                type="text"
+                placeholder="Name"
+                name="name"
+                id="signup-name-input"
+              />
+            </div>
+            <div>
+              <label for="signup-email-input">メールアドレス</label>
+              <input
+                type="text"
+                placeholder="Email"
+                name="email"
+                id="signup-email-input"
+              />
+            </div>
+            <div>
+              <label for="signup-password-input">パスワード</label>
+              <input
+                type="password"
+                placeholder="Password"
+                name="password1"
+                id="signup-password-input"
+              />
+            </div>
+            <div>
+              <label for="signup-password-confirmation-input">
+                パスワード（再入力）
+              </label>
+              <input
+                type="password"
+                placeholder="Password Confirmation"
+                name="password2"
+                id="signup-password-confirmation-input"
+              />
+            </div>
+            <div class="registration-button-container">
+              {% with messages = get_flashed_messages() %} {% if messages %}
+              <ul class="flashes">
+                {% for message in messages %}
+                <li>{{ message }}</li>
+                {% endfor %}
+              </ul>
+              {% endif %} {% endwith %}
+              <button class="registration-button">新規登録</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

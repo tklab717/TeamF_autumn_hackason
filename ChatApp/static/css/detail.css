@@ -1,0 +1,326 @@
+/* 各チャンネル詳細ページのCSS */
+.chat-box {
+  background-size: cover; /* 背景をカバーするように調整 */
+  min-height: 100vh;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  top: 54px;
+  right: 0;
+  width: calc(100vw - 64px);
+}
+
+
+#chat-header {
+  color: black;
+  height: 11vh;
+  width: calc(100vw - 50px);
+  position: fixed;
+  top: 0;
+  right: 0;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: center; /* Flexbox アイテムを中央に配置 */
+  gap: 2rem;
+  padding-left: 20px;
+  z-index: 2;
+  font-size: 30px; /* フォントサイズを大きく設定 */
+  letter-spacing: -0.1em; /* 字間を設定 */
+  font-family: 'Dancing Script', cursive; /* フォントファミリーを設定 */
+  text-shadow: 2px 2px 2px #ffccff; /* テキストに影を追加 */
+}
+
+#chatroom-name {
+  font-size: larger;
+}
+
+#chatroom-description {
+  font-size: larger;
+  font-weight: 200;
+  letter-spacing: 0.15em;
+}
+
+#channel-update-button {
+  position: absolute; /* ボタンの位置を絶対位置に設定 */
+  top: 60%; /* 上から50%の位置 */
+  left: 70%; /* 左から50%の位置 */
+  transform: translate(-50%, -50%); /* ボタンの中心を正確な位置に配置 */
+  background-color: transparent; /* 背景を透明に設定 */
+  border: none;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: 4px; /* Rounded corners */
+}
+
+#button-description {
+  pointer-events: none; /* ツールチップのマウスイベントを無視 */
+  transition: opacity 0.3s, visibility 0.3s;
+  visibility: hidden;
+  opacity: 0;
+  position: fixed; /* ポジションを固定に設定 */
+  display: none; /* 初期状態では説明を非表示にする */
+  background-color: black; /* 背景色は黒 */
+  color: white; /* 文字色は白 */
+  padding: 10px; /* 内側の余白を設定 */
+  font-weight: normal; /* フォントの太さを通常に設定 */
+  border-radius: 5px; /* 角を丸くする */
+  z-index: 1000; /* 他の要素の上に表示する */
+  word-wrap: break-word; /* 長いテキストを折り返す */
+  color: white; /* 文字色 */
+  font-family: "Boku2b", sans-serif; /* フォントスタイルを指定 */
+  font-size: 14px; /* フォントサイズ */
+  font-weight: normal; /* フォントの太さ */
+  text-shadow: none; /* テキストの影を無くす */
+  letter-spacing: 0.1em; /* 文字間隔を広げる */
+  white-space: normal; /* テキストを折り返す */
+  overflow: visible; /* はみ出したテキストを表示 */
+  text-overflow: clip; /* はみ出したテキストを切り取る */
+  max-width: 400px; /* 最大幅を設定（必要に応じて調整） */
+}
+
+#channel-update-button:hover + #button-description {
+  display: block; /* ツールチップを表示 */
+  visibility: visible; /* 視認性を有効に */
+  opacity: 1; /* 透明度を完全に */
+  bottom: 91%; /* ボタンの全高さ分下に移動 */
+  right: 340px; /* 親要素の右端に合わせる */
+  transform: translateY(100%); /* さらに下に移動（ボタンの高さ分） */
+  transition-delay: 1.0s; /* 表示されるまでの遅延を追加 */
+}
+
+
+/* メッセージエリア */
+
+#message-area {
+  min-height: 100vh;
+  width: 100%;
+  padding-top: 10vh;
+  padding-right: 20px;
+  padding-bottom: calc(20vh + 10px);
+  padding-left: 20px;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+::-webkit-scrollbar {
+  width: 0px;
+}
+
+.messages {
+  display: flex;
+  flex-direction: column;
+}
+
+.user-name {
+  font-size: 8px;
+  color: grey;
+  margin: 1px 0;
+}
+
+.my-messages {
+  display: flex;
+}
+
+.delete-message-button {
+  background-color: var(--snow);
+  height: 40px;
+  width: 40px;
+  line-height: 47px;
+  padding: 0;
+  margin: 0;
+  bottom: 8px;
+  right: 8px;
+  border: 1px solid black; /* 黒い枠線を追加 */
+}
+
+.delete-message-button ion-icon {
+  font-size: 1rem;
+}
+
+.box {
+  position: relative;
+  width: 60%;
+  margin: 0;
+  padding: 0.7em 0 0.4em 1em;
+  font-size: 14px;
+  line-height: 1.5;
+  letter-spacing: 0.1em;
+  white-space: pre-wrap;
+}
+
+.box-left {
+  background-color: white;
+  color: black;
+}
+
+.box-right {
+  background-color: white;
+  color: black;
+  margin-left: auto;
+}
+
+.box-left:before {
+  position: absolute;
+  top: 3px;
+  left: 3px;
+  width: 100%;
+  height: 100%;
+  border: 1px solid white;
+  content: "";
+}
+
+.box-right:before {
+  position: absolute;
+  top: 3px;
+  right: 3px;
+  width: 100%;
+  height: 100%;
+  border: 1px solid white;
+  content: "";
+}
+
+#no-message {
+  padding-top: 54px;
+  width: 100%;
+  height: calc(100vh - (54px + 15vh));
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#no-message p {
+  display: inline;
+  color: black; /* テキストの色を白に変更 */
+  font-size: 40px; 
+  font-family: 'Dancing Script', cursive; /* フォントファミリーを設定 */
+  text-shadow: 2px 2px 2px #ffccff; /* テキストに影を追加 */
+}
+
+/* ========================================================== */
+
+.typing-box-wrapper {
+  position: fixed;
+  bottom: 0;
+  width: calc(100vw - 50px);
+  height: 15vh;
+  background-size: contain;
+  border-top: 3px solid lightgrey;
+  display: flex;
+  align-items: center;
+  justify-content: start;
+}
+
+.typing-box {
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  height: 80%;
+  width: 80%;
+  margin: auto;
+  position: relative;
+  background-color: var(--snow);
+  border-radius: 8px;
+  border: solid 1px lightgrey;
+  display: flex;
+}
+
+.typing-box textarea {
+  background-color: transparent;
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  width: 100%;
+  padding: 0.5em;
+  border-radius: 16px;
+  flex-grow: 1;
+}
+
+.typing-box textarea:focus {
+  cursor: pointer;
+}
+
+#add-message-button {
+  background-color: var(--navy_blue);
+  height: 100%;
+  width: 40px;
+  padding: 0;
+  margin: 0;
+}
+
+#add-message-button ion-icon {
+  font-size: 1.3rem;
+}
+
+/* ========================================================== */
+/* Tooltip */
+
+#message-send-tooltip {
+  position: relative;
+}
+
+#message-send-tooltip-description {
+  display: none;
+  position: absolute;
+  padding: 10px 16px;
+  font-size: 12px;
+  line-height: 1.6em;
+  color: var(--snow);
+  background: var(--navy_blue);
+  min-width: 182px;
+  z-index: 8;
+}
+
+#message-send-tooltip-description p {
+  font-size: 12px;
+  margin: 0;
+}
+
+#message-send-tooltip-description:before {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  border: 15px solid transparent;
+  border-top: 15px solid var(--navy_blue);
+  margin-left: -15px;
+}
+
+#message-send-tooltip:hover #message-send-tooltip-description {
+  display: inline-block;
+  top: calc(-1 * (15vh * 0.7));
+  left: -94px;
+}
+
+/* ========================================================== */
+/* レスポンシブ */
+
+@media screen and (max-width: 550px) {
+  #chatroom-description {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 639px) {
+  .chat-box {
+    padding-left: 0;
+    width: 100%;
+  }
+
+  .typing-box-wrapper,
+  #chat-header {
+    width: 100%;
+  }
+}
+
+@media only screen and (min-width: 640px) {
+  .box {
+    width: 40%;
+  }
+}

@@ -1,0 +1,30 @@
+/* 色を使い回しできるように変数にする */
+
+:root {
+  --green1:#ECF7DF; /* ログイン画面の背景色など */
+  --green2:#E8F9D3; /* ボタン、 ホーム画面タブの後ろ側など*/
+  --green3:#BCDEBE; /* ホーム画面の背景色、ログイン画面タブの後ろ側、モーダル外枠など*/
+  --green4:#5DAB73; /* 文字色など*/
+  --cream:#FFFAED; /* タブの前側など*/
+  --navy_blue:#4A4545; /* 文字色など（黒の代わり）*/
+  --MintGreen:#A8D5BA;
+  --SkyBlue:#5FA8D3; /* 背景色追加*/
+  --GoldenYellow:#FFD700; /* 色追加*/
+  --DeepOcean: #3D6D8C; /* 色追加*/
+  --ForestGreen: #387D58; /* 色追加*/
+  --DesertSand: #EFD09E; /* 色追加*/
+  --CoralPink:#FF9A8D; /* 色追加*/
+  --BrightSun: #FFEB3B; /* 色追加*/
+  --NightSky: #214254; /* 色追加*/
+  --TropicalFruit: #F29056; /* 色追加*/
+  --background:#48EBD6; /* 色追加*/
+  --snow: #ffffff;
+  --carbon: #3e4149;
+  --navy: #4e5b66;
+  --ash_grey: #f0f0f0;
+  --salmon_pink: #f57978;
+  --middle_pink: #f45554;
+}
+
+
+
