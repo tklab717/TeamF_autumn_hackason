@@ -121,8 +121,13 @@ def teamSelectProcess():
     # チーム登録済みの場合は登録しない。全てのパラメータが同じ場合。
     elif DBteamList != None:
         flash('既に登録されているようです')
-        # models.pyでINSERTの関数を作成する
-        return redirect('/')  
+        session['year'] = year
+        session['season'] = season
+        session['team'] = team
+        session['github'] = github
+        return redirect('/') 
+        
+
     else: 
         dbConnect.createteamLists(uid, year, season, team, github) 
         Year = (year) 
