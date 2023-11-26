@@ -62,7 +62,7 @@ def userSignup():
             dbConnect.createUser(uid, name, email, password)
             UserId = str(uid)
             session['uid'] = UserId
-            return redirect('/')
+            return redirect('/mypage')
     return redirect('/signup')
 
 # ログインページの表示
