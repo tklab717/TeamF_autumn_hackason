@@ -1,14 +1,14 @@
 @font-face {
-	font-family: "Boku2b";/*要素に指定するときに使うフォント名*/
-	src:url("font/WebSubset-Boku2b.woff") format('woff');/*先に記述するほど優先度高*/
-	font-display: swap;
+  font-family: "Boku2b"; /*要素に指定するときに使うフォント名*/
+  src: url("font/WebSubset-Boku2b.woff") format("woff"); /*先に記述するほど優先度高*/
+  font-display: swap;
 }
 
 * {
   float: none;
   position: static;
-  font-family: "Boku2b","M PLUS 1", sans-serif;
-  font-family: "Boku2b","League Spartan", sans-serif;
+  font-family: "Boku2b", "M PLUS 1", sans-serif;
+  font-family: "Boku2b", "League Spartan", sans-serif;
   font-size: 16px;
   box-sizing: border-box;
 }
@@ -80,7 +80,7 @@ button {
 /* 新たに追加する「集まれ」ボタンのスタイル */
 .gather-button {
   padding: 10px 20px;
-  background-color: #FFA500; /* ボタンの背景色 */
+  background-color: #ffa500; /* ボタンの背景色 */
   color: white; /* ボタンの文字色 */
   border: none; /* ボタンの枠線をなくす */
   border-radius: 5px; /* ボタンの角を丸める */
@@ -91,12 +91,12 @@ button {
 }
 
 .gather-button:hover {
-  background-color: #CC8400; /* ホバー時の背景色 */
+  background-color: #cc8400; /* ホバー時の背景色 */
 }
 
 /* 新たに追加するボタンコンテナのスタイル */
 .button-container {
-  background-color: #FFFFFF; /* コンテナの背景色を白に変更 */
+  background-color: #ffffff; /* コンテナの背景色を白に変更 */
   padding: 20px; /* 内側の余白を増やしてボタンを包む */
   position: fixed; /* ページ内で常に同じ位置に表示されるように */
   top: 30px; /* 上からの位置 */
@@ -105,7 +105,7 @@ button {
   display: flex; /* ボタンを横に並べる */
   gap: 15px; /* ボタン間のスペース */
   border-radius: 10px; /* コンテナの角を丸める */
-  box-shadow: 0 2px 4px rgba(0,0,0,0.2); /* 影をよりはっきりさせる */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* 影をよりはっきりさせる */
 }
 
 /* 新たに追加する各ボタンの共通スタイル */
@@ -122,11 +122,11 @@ button {
 
 /* 'GITへ移行' ボタンのスタイル */
 .git-transition-button {
-  background-color: #4CAF50; /* ボタンの背景色 */
+  background-color: #4caf50; /* ボタンの背景色 */
 }
 
 .git-transition-button:hover {
-  background-color: #357A38; /* ホバー時の背景色 */
+  background-color: #357a38; /* ホバー時の背景色 */
 }
 
 .tooltip {

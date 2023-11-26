@@ -156,6 +156,10 @@ def index():
     else:
         #セッションid,year,season,team,githubからチームチャネルを取得する
         channels = dbConnect.selectTeam(uid, year, season, team, github)
+        #該当するチャネルが存在しない場合は空の情報を作成
+        if channels == ():
+            channels =[{'id':'', 'uid': '', 'name': '', '': ''}]
+
     return render_template('index.html', channels=channels, uid=uid, github=github)
 
 
