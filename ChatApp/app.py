@@ -9,10 +9,11 @@ from util.SSM import SSM
 
 app = Flask(__name__)
 
+# クラウド環境の場合のみFlaskメールを使用する
 try:
-    # クラウド環境の場合のみFlaskメールを使用する
-    # Function for get_parameters
+    #EC2でSSMに接続し、REGION情報を入手できるかでクラウド環境かを判断
     REGION_now = SSM.get_parameters('RDS-REGION')
+    #flask-mailでsmtpサーバに接続するために必要なパラメータをセット
     app.config['MAIL_SERVER'] = 'smtp.gmail.com'
     app.config['MAIL_PORT'] = 587                             # TLSは587、SSLなら465
     app.config['MAIL_USERNAME'] = SSM.get_parameters('FLASKMAIL-USER')
@@ -21,12 +22,15 @@ try:
     app.config['MAIL_USE_SSL'] = False
     app.config['MAIL_DEFAULT_SENDER'] =  SSM.get_parameters('FLASKMAIL-USER')    # これがあるとsender設定が不要になる
     mail = Mail(app)
+    #flask-mailを使う場合はフラグを立てる
     f_fmail=1
 except:
-    pass
+    #flask-mailを使わない場合はフラグを落とす
     f_fmail=0
 
+#cookieを暗号化する秘密鍵を設定(ランダムなuuid(重複しないID）を作成しセット)
 app.secret_key = uuid.uuid4().hex
+#セッションがアクティブでなくてもセッション情報を保持する期間
 app.permanent_session_lifetime = timedelta(days=30)
 
 
