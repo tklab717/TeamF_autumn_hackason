@@ -42,13 +42,14 @@ def signup():
 # サインアップ処理
 @app.route('/signup', methods=['POST'])
 def userSignup():
+    # POSTによって送られていたパラメータの受け取り
     name = request.form.get('name')
     email = request.form.get('email')
     password1 = request.form.get('password1')
     password2 = request.form.get('password2')
-
+    # ブラウザ入力形式の定義
     pattern = "^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$"
-
+    # ブラウザ入力形式のチェック
     if name == '' or email =='' or password1 == '' or password2 == '':
         flash('空のフォームがあるようです')
     elif password1 != password2:
@@ -56,14 +57,18 @@ def userSignup():
     elif re.match(pattern, email) is None:
         flash('正しいメールアドレスの形式ではありません')
     else:
+        # 入力に問題ない場合はuuidを生成し、パスワードhash化
         uid = uuid.uuid4()
         password = hashlib.sha256(password1.encode('utf-8')).hexdigest()
+        # emailアドレスからユーザ情報の入手
         DBuser = dbConnect.getUser(email)
 
         if DBuser != None:
             flash('既に登録されているようです')
         else:
+            # DB登録されていないユーザの場合、DBに情報を登録する
             dbConnect.createUser(uid, name, email, password)
+            # ログインしたユーザのセッションを確立する
             UserId = str(uid)
             session['uid'] = UserId
             return redirect('/mypage')
@@ -77,16 +82,20 @@ def login():
 # ログイン処理
 @app.route('/login', methods=['POST'])
 def userLogin():
+    # ブラウザからPOSTで送信された情報を受け取る
     email = request.form.get('email')
     password = request.form.get('password')
 
+    # 入力情報をチェックし、問題なければログイン処理する
     if email =='' or password == '':
         flash('空のフォームがあるようです')
     else:
+        # emailアドレスよりユーザ情報を入手する
         user = dbConnect.getUser(email)
         if user is None:
             flash('このユーザーは存在しません')
         else:
+            # ユーザ情報があった場合は、入力されたパスワードと登録されたパスワードが同じかチェックする
             hashPassword = hashlib.sha256(password.encode('utf-8')).hexdigest()
             if hashPassword != user["password"]:
                 flash('パスワードが間違っています！')
@@ -99,6 +108,7 @@ def userLogin():
 # ログアウト
 @app.route('/logout')
 def logout():
+    #ログアウトするときはセッション情報を消す
     session.clear()
     return redirect('/login')
 
@@ -112,17 +122,17 @@ def mypage():
 def teamSelectProcess():
     # uidはセッションで受け渡し
     uid = session.get("uid")
-    # フォームからデータを取得
+    # ブラウザフォームへの入力からデータを取得
     year = request.form['year']
     season = request.form['season']
     team = request.form['team']
     github = request.form['github']
 
-    # ここでデータを処理（例：セッションに保存、データベースに保存など）
+    # 入力データがDBに既に登録されているか確認
     DBteamList = dbConnect.getteamList(uid, year, season, team, github)
     if year == '' or season == '' or team == '' or github == '':
         flash('からのフォームがあるようです')
-    # チーム登録済みの場合は登録しない。全てのパラメータが同じ場合。
+    # チーム登録済みの場合は登録しない。(全てのパラメータが同じ場合)
     elif DBteamList != None:
         flash('既に登録されているようです')
         session['year'] = year
@@ -130,19 +140,15 @@ def teamSelectProcess():
         session['team'] = team
         session['github'] = github
         return redirect('/') 
-        
-
     else: 
+        # チーム登録済みでない場合、DBにチーム登録する。
         dbConnect.createteamLists(uid, year, season, team, github) 
-        Year = (year) 
-        Season = (season) 
-        Team = (team) 
-        Github = (github) 
-        session['year'] = Year
-        session['season'] = Season
-        session['team'] = Team
-        session['github'] = Github
+        session['year'] = year
+        session['season'] = season
+        session['team'] = team
+        session['github'] = github
         return redirect('/')
+
     return redirect('/login')  
 
 
