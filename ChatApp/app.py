@@ -131,20 +131,17 @@ def teamSelectProcess():
     # 入力データがDBに既に登録されているか確認
     DBteamList = dbConnect.getteamList(uid, session['year'], session['season'], session['team'], session['github'])
     if session['year'] == '' or session['season'] == '' or session['team'] == '' or session['github'] == '':
-        flash('からのフォームがあるようです')
-    
+        #ブラウザ側で未入力は無いように処理するためこの条件は使わない
+        return redirect('/login')  
+
     elif DBteamList != None:
         # チーム登録済みの場合は登録せず、入室する。(全てのパラメータが同じ場合)
-        flash('既に登録されているようです')
         return redirect('/') 
 
     else: 
         # チーム登録済みでない場合、DBにチーム登録し、入室する。
         dbConnect.createteamLists(uid, session['year'], session['season'], session['team'], session['github']) 
         return redirect('/')
-
-    return redirect('/login')  
-
 
 # 各チームのチャンネル一覧ページの表示
 @app.route('/')
